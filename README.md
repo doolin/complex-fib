@@ -21,3 +21,39 @@ postgres:
 `docker-compose down && docker-compose up --build`
 
 Please note, all of these changes are reflected in the downloadable checkpoint zip files.
+
+## Video 141 Required Client Service Update and Worker Environment Variables
+
+In the next lecture, we will be adding a client and worker service. There are two required configuration updates that need to be made:
+
+1. When adding the "Client" service, be sure to include the `stdin_open: true` configuration:
+
+```yaml
+client:
+  stdin_open: true
+  build:
+    dockerfile: Dockerfile.dev
+    context: ./client
+  volumes:
+    - /app/node_modules
+    - ./client:/app
+```
+
+Otherwise, you will get a **"React App exited with Code 0"** error in your terminal when we attempt to start up the application.
+
+2. When adding the **"Worker"** service, include the Redis host and port as environment variables:
+
+```yaml
+worker:
+  build:
+    dockerfile: Dockerfile.dev
+    context: ./worker
+  volumes:
+    - /app/node_modules
+    - ./worker:/app
+  environment:
+    - REDIS_HOST=redis
+    - REDIS_PORT=6379
+```
+
+Otherwise, you will get a **"Calculated Nothing Yet"** error message.
