@@ -13,3 +13,11 @@ services:
     volumes:
       - /app/node_modules
       - ./server:/app
+    environment:
+      - COMPLEX_FIB_REDIS_HOST=redis
+      - COMPLEX_FIB_REDIS_PORT=6379
+      - COMPLEX_FIB_PG_USER=postgres
+      - COMPLEX_FIB_PG_HOST=postgres
+      - COMPLEX_FIB_PG_DATABASE=postgres
+      - COMPLEX_FIB_PG_PASSWORD=postgres_password
+      - COMPLEX_FIB_PG_PORT=5432

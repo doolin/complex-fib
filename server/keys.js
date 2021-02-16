@@ -6,6 +6,6 @@ module.exports = {
   pgUser: process.env.COMPLEX_FIB_PG_USER,
   pgHost: process.env.COMPLEX_FIB_PG_HOST,
   pgDatabase: process.env.COMPLEX_FIB_PG_DATABASE,
-  pgPassword: process.env.COMPLEX_FIB_PG_PASSWROD,
+  pgPassword: process.env.COMPLEX_FIB_PG_PASSWORD,
   pgPort: process.env.COMPLEX_FIB_PG_PORT
 };

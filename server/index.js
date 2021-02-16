@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 
 // Postgres client setup
 const { Pool } = require('pg');
-const pgClient = Pool({
+const pgClient = new Pool({
   user: keys.pgUser,
   host: keys.pgHost,
   database: keys.pgDatabase,
@@ -53,7 +53,7 @@ const redisClient = redis.createClient({
   port: keys.redisPort,
   retry_strategy: () => 1000
 });
-const redisPublisher = redis.RedisClient.duplicate();
+const redisPublisher = redisClient.duplicate();
 
 // Express route handlers
 app.get('/', (req, res) => {
