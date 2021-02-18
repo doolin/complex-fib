@@ -26,7 +26,7 @@ services:
       - COMPLEX_FIB_PG_USER=postgres
       - COMPLEX_FIB_PG_HOST=postgres
       - COMPLEX_FIB_PG_DATABASE=postgres
-      - COMPLEX_FIB_PG_PASSWORD=postgres_password
+      - COMPLEX_FIB_PG_PASSWORD=postgres
       - COMPLEX_FIB_PG_PORT=5432
   client:
     build:

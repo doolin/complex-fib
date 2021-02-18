@@ -1,22 +1,22 @@
 const keys = require('./keys');
 
-// Express App setup
+// Express App Setup
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors  = require('cors');
+const cors = require('cors');
 
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-// Postgres client setup
+// Postgres client Setup
 const { Pool } = require('pg');
 const pgClient = new Pool({
   user: keys.pgUser,
   host: keys.pgHost,
   database: keys.pgDatabase,
-  passwrod: keys.pgPassword,
-  port: keys.pgPort
+  password: keys.pgPassword,
+  port: keys.pgPort,
 });
 
 // Important Update for Table Query
@@ -57,11 +57,11 @@ const redisPublisher = redisClient.duplicate();
 
 // Express route handlers
 app.get('/', (req, res) => {
-  res.sent('Hi');
+  res.send('Hi');
 });
 
 app.get('/values/all', async (req, res) => {
-  const values = await pgClient.query('SELECT * FROM VALUES');
+  const values = await pgClient.query('SELECT * FROM values');
 
   res.send(values.rows);
 });
@@ -73,7 +73,7 @@ app.get('/values/current', async (req, res) => {
 }); 
 
 app.post('/values', async (req, res) => {
-  const index  = req.body.index;
+  const index = req.body.index;
 
   if (parseInt(index) > 40) {
     return res.status(422).send('Index to high');
@@ -87,7 +87,7 @@ app.post('/values', async (req, res) => {
 });
 
 app.listen(5000, err => {
-  console.log('listening');
+  console.log('Listening');
 });
 
 
