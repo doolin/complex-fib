@@ -72,3 +72,17 @@ nginx:
     - api
     - client
 ```
+
+## Video 151 Important Node Image Version Update
+
+10-26-2020
+
+In the next lecture, we will be creating a Dockerfile for the production server container. The Node v15 image was just released a few days ago and is breaking the code in our server/index.js.
+
+To work around this, we need to change the version of Node this container will use:
+
+`FROM node:alpine`
+
+to this:
+
+`FROM node:14.14.0-alpine`
